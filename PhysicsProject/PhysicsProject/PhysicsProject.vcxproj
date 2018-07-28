@@ -115,6 +115,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="MathV.cpp" />
+    <ClCompile Include="Week1_Ex.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="MathV.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
