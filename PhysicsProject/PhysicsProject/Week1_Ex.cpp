@@ -1,6 +1,8 @@
 #include <iostream>
+#include <conio.h>
 
-#include "MathV.h"
+
+#include <glm.hpp>
 
 
 void ExerciseOne();
@@ -24,11 +26,19 @@ int main()
 
 	default: break;
 	}
+
+
+	_getch();
+	return 0;
 }
 
 // Lagrange's formula prove
 void ExerciseOne()
 {
+	glm::vec3 ResultVector;
+	std::cout << "Enter a vector 3: ";
+	std::cin >> ResultVector.x >> ResultVector.y >> ResultVector.z;
+	std::cout << std::endl;
 
 }
 
