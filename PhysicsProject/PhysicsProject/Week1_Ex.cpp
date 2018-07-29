@@ -35,11 +35,45 @@ int main()
 // Lagrange's formula prove
 void ExerciseOne()
 {
-	glm::vec3 ResultVector;
-	std::cout << "Enter a vector 3: ";
-	std::cin >> ResultVector.x >> ResultVector.y >> ResultVector.z;
+	system("cls");
+
+	glm::vec3 vectorA;
+	glm::vec3 vectorB;
+	glm::vec3 vectorC;
+
+	glm::vec3 resultVectorLHS;
+	glm::vec3 resultVectorRHS;
+
+	std::cout << "Enter a vector A: ";
+	std::cin >> vectorA.x >> vectorA.y >> vectorA.z;
 	std::cout << std::endl;
 
+	std::cout << "Enter a vector B: ";
+	std::cin >> vectorB.x >> vectorB.y >> vectorB.z;
+	std::cout << std::endl;
+
+	std::cout << "Enter a vector C: ";
+	std::cin >> vectorC.x >> vectorC.y >> vectorC.z;
+	std::cout << std::endl;
+
+	resultVectorLHS = glm::cross(vectorA, glm::cross(vectorB, vectorC));
+
+	resultVectorRHS = vectorB * glm::dot(vectorA, vectorC)
+						- vectorC * glm::dot(vectorA, vectorB);
+
+	std::cout << "LHS : " << resultVectorLHS.x 
+				<< ", " << resultVectorLHS.y 
+				<< ", " << resultVectorLHS.z << "\n";
+
+	std::cout << "LHS : " << resultVectorRHS.x 
+				<< ", " << resultVectorRHS.y 
+				<< ", " << resultVectorRHS.z << "\n";
+
+	if (resultVectorLHS == resultVectorRHS)
+	{
+		std::cout << "PROVED!";
+	}
+	else std::cout << "U SUCK!";
 }
 
 void ExerciseTwo()
