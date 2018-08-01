@@ -134,7 +134,7 @@ void ExerciseThree()
 
 	glm::vec3 pointToCheck1;
 	glm::vec3 pointToCheck2;
-	glm::vec3 pointOnLine;
+	//glm::vec3 pointOnLine;
 
 	std::cout << "Enter plane point: ";
 	std::cin >> planePoint.x >> planePoint.y >> planePoint.z;
@@ -153,7 +153,7 @@ void ExerciseThree()
 	std::cout << std::endl;
 
 
-	pointOnLine = pointToCheck1 + (SCALER * (pointToCheck2 - pointToCheck1));
+	//pointOnLine = pointToCheck1 + (SCALER * (pointToCheck2 - pointToCheck1));
 
 	float resultValue = glm::dot(planeNormal, (planePoint - pointToCheck1))
 		/ glm::dot(planeNormal, (pointToCheck2 - pointToCheck1));
@@ -220,9 +220,43 @@ void ExerciseFour()
 	std::cout << std::endl;
 
 
-	glm::vec3 line1 = point1 + (SCALER * (point2 - point1));
-	glm::vec3 line2 = point1 + (SCALER * (point3 - point1));
-	glm::vec3 line3 = point2 + (SCALER * (point3 - point2));
+	//glm::vec3 line1 = point1 + (SCALER * (point2 - point1));
+	//glm::vec3 line2 = point1 + (SCALER * (point3 - point1));
+	//glm::vec3 line3 = point2 + (SCALER * (point3 - point2));
 
 
+	float resultLine1 = glm::dot(planeNormal, (planePoint - point1))
+		/ glm::dot(planeNormal, (point2 - point1));
+
+	float resultLine2 = glm::dot(planeNormal, (planePoint - point1))
+		/ glm::dot(planeNormal, (point3 - point1));
+
+	float resultLine3 = glm::dot(planeNormal, (planePoint - point2))
+		/ glm::dot(planeNormal, (point3 - point2));
+
+	// Computing Result
+	if (resultLine1 > 0.0f && resultLine1 < 1.0f
+		|| resultLine2 > 0.0f && resultLine2 < 1.0f
+		|| resultLine3 > 0.0f && resultLine3 < 1.0f)
+	{
+		std::cout << "Collision Occurred. \n";
+		std::cout << "Intersect between points";
+		return;
+	}
+	else if (resultLine1 == 0.0f || resultLine2 == 0.0f || resultLine3 == 0.0f)
+	{
+		std::cout << "Collision Occurred. \n";
+		std::cout << "Intersect at first end point";
+		return;
+	}
+	else if (resultLine1 == 1.0f || resultLine2 == 1.0f || resultLine3 == 1.0f)
+	{
+		std::cout << "Collision Occurred. \n";
+		std::cout << "Intersect at second end point";
+		return;
+	}
+	else 
+	{
+		std::cout << "No Collision Occurred";
+	}
 }
