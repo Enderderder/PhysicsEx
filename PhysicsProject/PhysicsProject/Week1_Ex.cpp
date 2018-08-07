@@ -21,15 +21,19 @@ int main()
 	{
 	case 1:
 		ExerciseOne();
+		break;
 
 	case 2:
 		ExerciseTwo();
+		break;
 
 	case 3:
 		ExerciseThree();
+		break;
 
 	case 4:
 		ExerciseFour();
+		break;
 
 	default: break;
 	}
@@ -107,7 +111,7 @@ void ExerciseTwo()
 
 	dis_OriginToPlane = glm::dot(planeNormal, planePoint);
 
-	std::cout << "Distance from the origin to the palne: " << dis_OriginToPlane << "\n";
+	std::cout << "Distance from the origin to the plane: " << dis_OriginToPlane << "\n";
 
 	float resultValue = (glm::dot(planeNormal, pointToCheck)) - dis_OriginToPlane;
 
@@ -214,17 +218,12 @@ void ExerciseFour()
 	std::cout << "Enter point 2: ";
 	std::cin >> point2.x >> point2.y >> point2.z;
 	std::cout << std::endl;
-
+	
 	std::cout << "Enter point 3: ";
-	std::cin >> point2.x >> point2.y >> point2.z;
+	std::cin >> point3.x >> point3.y >> point3.z;
 	std::cout << std::endl;
 
-
-	//glm::vec3 line1 = point1 + (SCALER * (point2 - point1));
-	//glm::vec3 line2 = point1 + (SCALER * (point3 - point1));
-	//glm::vec3 line3 = point2 + (SCALER * (point3 - point2));
-
-
+	// Computing Reuslt for each Line
 	float resultLine1 = glm::dot(planeNormal, (planePoint - point1))
 		/ glm::dot(planeNormal, (point2 - point1));
 
@@ -235,28 +234,16 @@ void ExerciseFour()
 		/ glm::dot(planeNormal, (point3 - point2));
 
 	// Computing Result
-	if (resultLine1 > 0.0f && resultLine1 < 1.0f
-		|| resultLine2 > 0.0f && resultLine2 < 1.0f
-		|| resultLine3 > 0.0f && resultLine3 < 1.0f)
+	if (resultLine1 >= 0.0f && resultLine1 <= 1.0f
+		|| resultLine2 >= 0.0f && resultLine2 <= 1.0f
+		|| resultLine3 >= 0.0f && resultLine3 <= 1.0f)
 	{
-		std::cout << "Collision Occurred. \n";
-		std::cout << "Intersect between points";
+		std::cout << "Collide";
 		return;
 	}
-	else if (resultLine1 == 0.0f || resultLine2 == 0.0f || resultLine3 == 0.0f)
+	else
 	{
-		std::cout << "Collision Occurred. \n";
-		std::cout << "Intersect at first end point";
+		std::cout << "No Collide";
 		return;
-	}
-	else if (resultLine1 == 1.0f || resultLine2 == 1.0f || resultLine3 == 1.0f)
-	{
-		std::cout << "Collision Occurred. \n";
-		std::cout << "Intersect at second end point";
-		return;
-	}
-	else 
-	{
-		std::cout << "No Collision Occurred";
 	}
 }
