@@ -14,7 +14,7 @@ int main()
 {
 	int choice;
 
-	std::cout << "Enter Number: ";
+	std::cout << "Enter Exercise Number: ";
 	std::cin >> choice;
 
 	switch (choice)
